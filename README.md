@@ -4,19 +4,21 @@ Node.js + Express + MongoDB backend for the Debug Relay Race.
 
 ## Prerequisites
 - **Node.js**: Installed on your system.
-- **MongoDB**: Installed and running locally at `mongodb://127.0.0.1:27017`.
+- **MongoDB**: Installed locally or a remote URI (e.g., MongoDB Atlas).
 
 ## Folder Structure
 ```
 backend/
 ├── models/
 │   └── Participant.js   # Mongoose Schema
+├── .env                 # Environment Variables
+├── .env.example         # Example Env Template
 ├── package.json         # Dependencies
 ├── server.js            # Main application logic
 └── README.md            # Documentation
 ```
 
-## How to Run
+## Setup & Run
 
 1. **Open a terminal** and navigate to the `backend` folder:
    ```powershell
@@ -28,11 +30,17 @@ backend/
    npm install
    ```
 
-3. **Start the server**:
+3. **Configure Environment Variables**:
+   Copy `.env.example` to `.env` and update the values:
+   - `PORT`: Server port (default: 5000)
+   - `MONGODB_URI`: Your MongoDB connection string
+   - `FRONTEND_URL`: The URL of your frontend application (for CORS)
+
+4. **Start the server**:
    ```powershell
    npm start
    ```
-   The backend will be available at [http://localhost:5000](http://localhost:5000).
+   The backend will be available at [http://localhost:5000](http://localhost:5000) (or your configured port).
 
 ## API Endpoints
 
@@ -44,4 +52,4 @@ backend/
 | PUT | `/admin/mark-winner/:id` | Mark a participant as the winner |
 
 ## Security Note
-This backend uses CORS to allow requests only from `http://localhost:5173`. Ensure your Vite frontend is running on that port.
+This backend uses CORS to allow requests only from the `FRONTEND_URL` defined in your `.env` file.
