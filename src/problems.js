@@ -21,7 +21,6 @@ Example item format:
 <li>Home</li>
 
 Write the full HTML structure.`,
-
     html_solution: `<nav><div>Debug Relay Race</div><ul><li>Home</li><li>Challenges</li><li>Leaderboard</li></ul></nav>`,
 
     python_question: `Call a function named is_prime to check whether the number 7 is prime.
@@ -30,8 +29,9 @@ Example format:
 function_name(number)
 
 Write the correct Python function call.`,
-
     python_solution: `is_prime(7)`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: employees
 
@@ -44,7 +44,6 @@ Example data:
 
 Task:
 Write an SQL query to display the names of employees ordered by salary from highest to lowest.`,
-
     sql_solution: `SELECT name FROM employees ORDER BY salary DESC`,
 
     logic_question: `
@@ -69,7 +68,6 @@ Write answers separated by comma.
 Example:
 A,B
 `,
-
     logic_solution: ["C", "B"]
   },
 
@@ -89,7 +87,6 @@ Requirements:
 Example label format: <label>Username</label>
 
 Write the HTML form.`,
-
     html_solution: `<form><label>Username</label><input><label>Email</label><input type="email"><label>Password</label><input type="password"><button>Register</button></form>`,
 
     python_question: `Call a function named factorial to calculate factorial of 5.
@@ -98,8 +95,9 @@ Example format:
 function_name(number)
 
 Write the Python function call.`,
-
     python_solution: `factorial(5)`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Tables:
 
@@ -108,7 +106,6 @@ orders(id,user_id)
 
 Task:
 Write an SQL query that joins the users table with the orders table using the user id.`,
-
     sql_solution: `SELECT * FROM users JOIN orders ON users.id = orders.user_id`,
 
     logic_question: `
@@ -133,7 +130,6 @@ D) 12
 Answer format example:
 A,B
 `,
-
     logic_solution: ["C", "B"]
   },
 
@@ -151,7 +147,6 @@ Requirements:
 4. <footer> containing text © 2026 Debug Relay Race
 
 Write the HTML structure.`,
-
     html_solution: `<div><header>Debug Relay Race</header><section>Coding Challenges</section><aside>Hints</aside><footer>© 2026 Debug Relay Race</footer></div>`,
 
     python_question: `Call the Python function reversed to reverse a list.
@@ -160,8 +155,9 @@ Example list:
 [1,2,3]
 
 Write the correct function call.`,
-
     python_solution: `reversed([1,2,3])`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: sales
 
@@ -174,7 +170,6 @@ Example data:
 
 Task:
 Write an SQL query that shows the total amount spent by each customer.`,
-
     sql_solution: `SELECT customer_id, SUM(amount) FROM sales GROUP BY customer_id`,
 
     logic_question: `
@@ -198,7 +193,6 @@ D) 4
 Answer format example:
 A,B
 `,
-
     logic_solution: ["C", "B"]
   },
 
@@ -215,12 +209,12 @@ Bob | 85
 Charlie | 95
 
 Write the full HTML table.`,
-
     html_solution: `<table><tr><th>Name</th><th>Score</th></tr><tr><td>Alice</td><td>90</td></tr><tr><td>Bob</td><td>85</td></tr><tr><td>Charlie</td><td>95</td></tr></table>`,
 
     python_question: `Call the Python function max to find the largest number in the list [3,7,2].`,
-
     python_solution: `max([3,7,2])`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: users
 
@@ -228,7 +222,6 @@ id | name | age
 
 Task:
 Write an SQL query to delete users whose age is less than 18.`,
-
     sql_solution: `DELETE FROM users WHERE age < 18`,
 
     logic_solution: ["C", "B"]
@@ -251,12 +244,12 @@ Solve problems and level up.
 
 Button text:
 Start Now`,
-
     html_solution: `<div><img src="card.jpg"><h3>Programming Challenge</h3><p>Solve problems and level up.</p><button>Start Now</button></div>`,
 
     python_question: `Convert the string "25" into an integer using Python.`,
-
     python_solution: `int("25")`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: customers
 
@@ -264,7 +257,6 @@ id | name | city
 
 Task:
 Write an SQL query to display unique city names.`,
-
     sql_solution: `SELECT DISTINCT city FROM customers`,
 
     logic_solution: ["A", "C"]
@@ -278,12 +270,12 @@ Write an SQL query to display unique city names.`,
 
 Video source:
 intro.mp4`,
-
     html_solution: `<section><video><source src="intro.mp4"></video></section>`,
 
     python_question: `Find the largest number in the list [10,5,8] using Python.`,
-
     python_solution: `max([10,5,8])`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: employees
 
@@ -291,7 +283,6 @@ id | name | salary
 
 Task:
 Write an SQL query to update salary to 50000 where id is 2.`,
-
     sql_solution: `UPDATE employees SET salary = 50000 WHERE id = 2`,
 
     logic_solution: ["B", "C"]
@@ -308,12 +299,12 @@ CSS
 JavaScript
 Python
 SQL`,
-
     html_solution: `<ol><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>SQL</li></ol>`,
 
     python_question: `Reverse the list [5,4,3] using Python.`,
-
     python_solution: `reversed([5,4,3])`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: orders
 
@@ -321,7 +312,6 @@ id | product | quantity
 
 Task:
 Write an SQL query to count total orders.`,
-
     sql_solution: `SELECT COUNT(*) FROM orders`,
 
     logic_solution: ["B", "B"]
@@ -335,12 +325,12 @@ Write an SQL query to count total orders.`,
 
 An input field requiring minimum 5 characters.
 A submit button with text Submit.`,
-
     html_solution: `<form><input required minlength="5"><button>Submit</button></form>`,
 
     python_question: `Check whether number 10 is even using Python.`,
-
     python_solution: `10%2==0`,
+    python_textareaCols: 80,
+    python_textareaRows: 10,
 
     sql_question: `Table: customers
 
@@ -348,7 +338,6 @@ id | name | city
 
 Task:
 Write an SQL query to display names of customers whose names start with 'A'.`,
-
     sql_solution: `SELECT name FROM customers WHERE name LIKE 'A%'`,
 
     logic_solution: ["C", "C"]
