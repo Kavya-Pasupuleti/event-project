@@ -1,10 +1,10 @@
 export const problems = [
 
-  {
-    id: 1,
-    title: "Navigation Bar Structure",
+    {
+        id: 1,
+        title: "Navigation Bar Structure",
 
-    html_question: `Create a navigation bar.
+        html_question: `Create a navigation bar.
 
 Requirements:
 
@@ -21,19 +21,19 @@ Example item format:
 <li>Home</li>
 
 Write the full HTML structure.`,
-    html_solution: `<nav><div>Debug Relay Race</div><ul><li>Home</li><li>Challenges</li><li>Leaderboard</li></ul></nav>`,
+        html_solution: `<nav><div>Debug Relay Race</div><ul><li>Home</li><li>Challenges</li><li>Leaderboard</li></ul></nav>`,
 
-    python_question: `Call a function named is_prime to check whether the number 7 is prime.
+        python_question: `Call a function named is_prime to check whether the number 7 is prime.
 
 Example format:
 function_name(number)
 
 Write the correct Python function call.`,
-    python_solution: `is_prime(7)`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_solution: `is_prime(7)`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: employees
+        sql_question: `Table: employees
 
 id | name | salary
 
@@ -44,9 +44,9 @@ Example data:
 
 Task:
 Write an SQL query to display the names of employees ordered by salary from highest to lowest.`,
-    sql_solution: `SELECT name FROM employees ORDER BY salary DESC`,
+        sql_solution: `SELECT name FROM employees ORDER BY salary DESC`,
 
-    logic_question: `
+        logic_question: `
 Q1. Three boxes are labeled Apples, Oranges, Apples & Oranges.
 All labels are wrong. Which box should you pick from?
 
@@ -68,14 +68,14 @@ Write answers separated by comma.
 Example:
 A,B
 `,
-    logic_solution: ["C", "B"]
-  },
+        logic_solution: ["C", "B"]
+    },
 
-  {
-    id: 2,
-    title: "Registration Form",
+    {
+        id: 2,
+        title: "Registration Form",
 
-    html_question: `Create a registration form.
+        html_question: `Create a registration form.
 
 Requirements:
 
@@ -87,28 +87,28 @@ Requirements:
 Example label format: <label>Username</label>
 
 Write the HTML form.`,
-    html_solution: `<form><label>Username</label><input><label>Email</label><input type="email"><label>Password</label><input type="password"><button>Register</button></form>`,
+        html_solution: `<form><label>Username</label><input><label>Email</label><input type="email"><label>Password</label><input type="password"><button>Register</button></form>`,
 
-    python_question: `Call a function named factorial to calculate factorial of 5.
+        python_question: `Call a function named factorial to calculate factorial of 5.
 
 Example format:
 function_name(number)
 
 Write the Python function call.`,
-    python_solution: `factorial(5)`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_solution: `factorial(5)`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Tables:
+        sql_question: `Tables:
 
 users(id,name)
 orders(id,user_id)
 
 Task:
 Write an SQL query that joins the users table with the orders table using the user id.`,
-    sql_solution: `SELECT * FROM users JOIN orders ON users.id = orders.user_id`,
+        sql_solution: `SELECT * FROM users JOIN orders ON users.id = orders.user_id`,
 
-    logic_question: `
+        logic_question: `
 Q1. After toggling lockers 100 times which lockers remain open?
 
 A) Prime numbers
@@ -130,14 +130,14 @@ D) 12
 Answer format example:
 A,B
 `,
-    logic_solution: ["C", "B"]
-  },
+        logic_solution: ["C", "B"]
+    },
 
-  {
-    id: 3,
-    title: "Semantic Layout",
+    {
+        id: 3,
+        title: "Semantic Layout",
 
-    html_question: `Create a webpage layout.
+        html_question: `Create a webpage layout.
 
 Requirements:
 
@@ -147,19 +147,19 @@ Requirements:
 4. <footer> containing text © 2026 Debug Relay Race
 
 Write the HTML structure.`,
-    html_solution: `<div><header>Debug Relay Race</header><section>Coding Challenges</section><aside>Hints</aside><footer>© 2026 Debug Relay Race</footer></div>`,
+        html_solution: `<div><header>Debug Relay Race</header><section>Coding Challenges</section><aside>Hints</aside><footer>© 2026 Debug Relay Race</footer></div>`,
 
-    python_question: `Call the Python function reversed to reverse a list.
+        python_question: `Call the Python function reversed to reverse a list.
 
 Example list:
 [1,2,3]
 
 Write the correct function call.`,
-    python_solution: `reversed([1,2,3])`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_solution: `reversed([1,2,3])`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: sales
+        sql_question: `Table: sales
 
 id | customer_id | amount
 
@@ -170,9 +170,9 @@ Example data:
 
 Task:
 Write an SQL query that shows the total amount spent by each customer.`,
-    sql_solution: `SELECT customer_id, SUM(amount) FROM sales GROUP BY customer_id`,
+        sql_solution: `SELECT customer_id, SUM(amount) FROM sales GROUP BY customer_id`,
 
-    logic_question: `
+        logic_question: `
 Q1. Four people must cross a bridge at night with one flashlight.
 Times: 1,2,7,10 minutes.
 Minimum total time?
@@ -193,14 +193,14 @@ D) 4
 Answer format example:
 A,B
 `,
-    logic_solution: ["C", "B"]
-  },
+        logic_solution: ["C", "B"]
+    },
 
-  {
-    id: 4,
-    title: "HTML Table",
+    {
+        id: 4,
+        title: "HTML Table",
 
-    html_question: `Create a table with the following data:
+        html_question: `Create a table with the following data:
 
 Name | Score
 
@@ -209,29 +209,29 @@ Bob | 85
 Charlie | 95
 
 Write the full HTML table.`,
-    html_solution: `<table><tr><th>Name</th><th>Score</th></tr><tr><td>Alice</td><td>90</td></tr><tr><td>Bob</td><td>85</td></tr><tr><td>Charlie</td><td>95</td></tr></table>`,
+        html_solution: `<table><tr><th>Name</th><th>Score</th></tr><tr><td>Alice</td><td>90</td></tr><tr><td>Bob</td><td>85</td></tr><tr><td>Charlie</td><td>95</td></tr></table>`,
 
-    python_question: `Call the Python function max to find the largest number in the list [3,7,2].`,
-    python_solution: `max([3,7,2])`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_question: `Call the Python function max to find the largest number in the list [3,7,2].`,
+        python_solution: `max([3,7,2])`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: users
+        sql_question: `Table: users
 
 id | name | age
 
 Task:
 Write an SQL query to delete users whose age is less than 18.`,
-    sql_solution: `DELETE FROM users WHERE age < 18`,
+        sql_solution: `DELETE FROM users WHERE age < 18`,
 
-    logic_solution: ["C", "B"]
-  },
+        logic_solution: ["C", "B"]
+    },
 
-  {
-    id: 5,
-    title: "Image Card",
+    {
+        id: 5,
+        title: "Image Card",
 
-    html_question: `Create a card component containing:
+        html_question: `Create a card component containing:
 
 Image source:
 card.jpg
@@ -244,103 +244,103 @@ Solve problems and level up.
 
 Button text:
 Start Now`,
-    html_solution: `<div><img src="card.jpg"><h3>Programming Challenge</h3><p>Solve problems and level up.</p><button>Start Now</button></div>`,
+        html_solution: `<div><img src="card.jpg"><h3>Programming Challenge</h3><p>Solve problems and level up.</p><button>Start Now</button></div>`,
 
-    python_question: `Convert the string "25" into an integer using Python.`,
-    python_solution: `int("25")`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_question: `Convert the string "25" into an integer using Python.`,
+        python_solution: `int("25")`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: customers
+        sql_question: `Table: customers
 
 id | name | city
 
 Task:
 Write an SQL query to display unique city names.`,
-    sql_solution: `SELECT DISTINCT city FROM customers`,
+        sql_solution: `SELECT DISTINCT city FROM customers`,
 
-    logic_solution: ["A", "C"]
-  },
+        logic_solution: ["A", "C"]
+    },
 
-  {
-    id: 6,
-    title: "Video Section",
+    {
+        id: 6,
+        title: "Video Section",
 
-    html_question: `Create a section containing a video player.
+        html_question: `Create a section containing a video player.
 
 Video source:
 intro.mp4`,
-    html_solution: `<section><video><source src="intro.mp4"></video></section>`,
+        html_solution: `<section><video><source src="intro.mp4"></video></section>`,
 
-    python_question: `Find the largest number in the list [10,5,8] using Python.`,
-    python_solution: `max([10,5,8])`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_question: `Find the largest number in the list [10,5,8] using Python.`,
+        python_solution: `max([10,5,8])`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: employees
+        sql_question: `Table: employees
 
 id | name | salary
 
 Task:
 Write an SQL query to update salary to 50000 where id is 2.`,
-    sql_solution: `UPDATE employees SET salary = 50000 WHERE id = 2`,
+        sql_solution: `UPDATE employees SET salary = 50000 WHERE id = 2`,
 
-    logic_solution: ["B", "C"]
-  },
+        logic_solution: ["B", "C"]
+    },
 
-  {
-    id: 7,
-    title: "Ordered List",
+    {
+        id: 7,
+        title: "Ordered List",
 
-    html_question: `Create an ordered list containing:
+        html_question: `Create an ordered list containing:
 
 HTML
 CSS
 JavaScript
 Python
 SQL`,
-    html_solution: `<ol><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>SQL</li></ol>`,
+        html_solution: `<ol><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>SQL</li></ol>`,
 
-    python_question: `Reverse the list [5,4,3] using Python.`,
-    python_solution: `reversed([5,4,3])`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_question: `Reverse the list [5,4,3] using Python.`,
+        python_solution: `reversed([5,4,3])`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: orders
+        sql_question: `Table: orders
 
 id | product | quantity
 
 Task:
 Write an SQL query to count total orders.`,
-    sql_solution: `SELECT COUNT(*) FROM orders`,
+        sql_solution: `SELECT COUNT(*) FROM orders`,
 
-    logic_solution: ["B", "B"]
-  },
+        logic_solution: ["B", "B"]
+    },
 
-  {
-    id: 8,
-    title: "Form Validation",
+    {
+        id: 8,
+        title: "Form Validation",
 
-    html_question: `Create a form containing:
+        html_question: `Create a form containing:
 
 An input field requiring minimum 5 characters.
 A submit button with text Submit.`,
-    html_solution: `<form><input required minlength="5"><button>Submit</button></form>`,
+        html_solution: `<form><input required minlength="5"><button>Submit</button></form>`,
 
-    python_question: `Check whether number 10 is even using Python.`,
-    python_solution: `10%2==0`,
-    python_textareaCols: 80,
-    python_textareaRows: 10,
+        python_question: `Check whether number 10 is even using Python.`,
+        python_solution: `10%2==0`,
+        python_textareaCols: 80,
+        python_textareaRows: 10,
 
-    sql_question: `Table: customers
+        sql_question: `Table: customers
 
 id | name | city
 
 Task:
 Write an SQL query to display names of customers whose names start with 'A'.`,
-    sql_solution: `SELECT name FROM customers WHERE name LIKE 'A%'`,
+        sql_solution: `SELECT name FROM customers WHERE name LIKE 'A%'`,
 
-    logic_solution: ["C", "C"]
-  }
+        logic_solution: ["C", "C"]
+    }
 
 ];
