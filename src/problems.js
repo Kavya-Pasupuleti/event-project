@@ -2,38 +2,72 @@ export const problems = [
 
   {
     id: 1,
-    title: "Semantic Navigation with Dropdown",
+    title: "Navigation Bar Structure",
 
-    html_question: `Create a semantic <nav> with:
-- Logo div
-- 3 menu items
-- One dropdown submenu (nested <ul>)
-- Proper class names`,
+    html_question: `Create a navigation bar.
 
-    html_solution: `<nav class="navbar"><div class="logo"></div><ul><li><a href="#"></a></li><li class="dropdown"><a href="#"></a><ul><li><a href="#"></a></li></ul></li><li><a href="#"></a></li></ul></nav>`,
+Requirements:
 
-    python_question: `Write a function that checks if a number is prime.`,
+1. Use a <nav> element.
+2. Inside it create a div with the text:
+   Debug Relay Race
+3. Create an unordered list containing three items:
+   Home
+   Challenges
+   Leaderboard
 
-    python_solution: `is_prime()`,
+Example item format:
 
-    sql_question: `Select top 5 highest salary employees.`,
+<li>Home</li>
 
-    sql_solution: `ORDER BY salary DESC LIMIT 5`,
+Write the full HTML structure.`,
+
+    html_solution: `<nav><div>Debug Relay Race</div><ul><li>Home</li><li>Challenges</li><li>Leaderboard</li></ul></nav>`,
+
+    python_question: `Call a function named is_prime to check whether the number 7 is prime.
+
+Example format:
+function_name(number)
+
+Write the correct Python function call.`,
+
+    python_solution: `is_prime(7)`,
+
+    sql_question: `Table: employees
+
+id | name | salary
+
+Example data:
+1 | Alice | 50000
+2 | Bob | 45000
+3 | Charlie | 70000
+
+Task:
+Write an SQL query to display the names of employees ordered by salary from highest to lowest.`,
+
+    sql_solution: `SELECT name FROM employees ORDER BY salary DESC`,
 
     logic_question: `
-Q1. Three boxes are labeled: Apples, Oranges, Apples & Oranges.
-All labels are wrong. You can pick only one fruit from one box.
+Q1. Three boxes are labeled Apples, Oranges, Apples & Oranges.
+All labels are wrong. Which box should you pick from?
+
 A) Apples
 B) Oranges
 C) Apples & Oranges
 D) Any box
 
 Q2. Three switches control three bulbs in another room.
-You may enter the room only once.
-A) Turn all ON
-B) Turn one ON, wait, turn OFF, turn another ON, then check heat
-C) Random guess
-D) Turn all OFF
+How can you determine which switch controls which bulb?
+
+A) Turn all switches on
+B) Turn one on, wait, turn it off, turn another on and check heat
+C) Guess randomly
+D) Turn all off
+
+Write answers separated by comma.
+
+Example:
+A,B
 `,
 
     logic_solution: ["C", "B"]
@@ -41,40 +75,63 @@ D) Turn all OFF
 
   {
     id: 2,
-    title: "Validated Registration Form",
+    title: "Registration Form",
 
-    html_question: `Create a form with:
-- Username (required)
-- Email (type=email)
-- Password (minlength 8)
-- Submit button
-- Proper label association`,
+    html_question: `Create a registration form.
 
-    html_solution: `<form><label for="u"></label><input id="u" required><label for="e"></label><input type="email" id="e"><label for="p"></label><input type="password" id="p" minlength="8"><button type="submit"></button></form>`,
+Requirements:
 
-    python_question: `How to write a recursive factorial function of a number n.`,
+1. Label with text Username and an input field
+2. Label with text Email and an input field
+3. Label with text Password and an input field
+4. A button with the text Register
 
-    python_solution: `factorial(n)`,
+Example label format: <label>Username</label>
 
-    sql_question: `Join users and orders tables.`,
+Write the HTML form.`,
 
-    sql_solution: `JOIN orders ON users.id = orders.user_id`,
+    html_solution: `<form><label>Username</label><input><label>Email</label><input type="email"><label>Password</label><input type="password"><button>Register</button></form>`,
+
+    python_question: `Call a function named factorial to calculate factorial of 5.
+
+Example format:
+function_name(number)
+
+Write the Python function call.`,
+
+    python_solution: `factorial(5)`,
+
+    sql_question: `Tables:
+
+users(id,name)
+orders(id,user_id)
+
+Task:
+Write an SQL query that joins the users table with the orders table using the user id.`,
+
+    sql_solution: `SELECT * FROM users JOIN orders ON users.id = orders.user_id`,
 
     logic_question: `
-Q1. After 100 passes toggling lockers, which remain open?
+Q1. After toggling lockers 100 times which lockers remain open?
+
 A) Prime numbers
 B) Even numbers
 C) Perfect squares
 D) Multiples of 10
 
-Q2. Find missing number:
+Q2. Find the missing number:
+
 2 6 7
 4 8 12
 6 ? 17
+
 A) 9
 B) 10
 C) 11
 D) 12
+
+Answer format example:
+A,B
 `,
 
     logic_solution: ["C", "B"]
@@ -82,33 +139,64 @@ D) 12
 
   {
     id: 3,
-    title: "Semantic Layout Structure",
+    title: "Semantic Layout",
 
-    html_question: `Create layout using:
-<header>, <main>, <section>, <aside>, <footer>`,
+    html_question: `Create a webpage layout.
 
-    html_solution: `<div><header></header><main><section></section><aside></aside></main><footer></footer></div>`,
+Requirements:
 
-    python_question: `How to Reverse a string in python without slicing.`,
+1. <header> containing text Debug Relay Race
+2. <section> containing text Coding Challenges
+3. <aside> containing text Hints
+4. <footer> containing text © 2026 Debug Relay Race
 
-    python_solution: `reversed()`,
+Write the HTML structure.`,
 
-    sql_question: `Group total sales by customer_id.`,
+    html_solution: `<div><header>Debug Relay Race</header><section>Coding Challenges</section><aside>Hints</aside><footer>© 2026 Debug Relay Race</footer></div>`,
 
-    sql_solution: `GROUP BY customer_id`,
+    python_question: `Call the Python function reversed to reverse a list.
+
+Example list:
+[1,2,3]
+
+Write the correct function call.`,
+
+    python_solution: `reversed([1,2,3])`,
+
+    sql_question: `Table: sales
+
+id | customer_id | amount
+
+Example data:
+1 | 101 | 500
+2 | 102 | 300
+3 | 101 | 200
+
+Task:
+Write an SQL query that shows the total amount spent by each customer.`,
+
+    sql_solution: `SELECT customer_id, SUM(amount) FROM sales GROUP BY customer_id`,
 
     logic_question: `
-Q1. Bridge crossing 1,2,7,10 minutes. Minimum time?
+Q1. Four people must cross a bridge at night with one flashlight.
+Times: 1,2,7,10 minutes.
+Minimum total time?
+
 A) 19
 B) 18
 C) 17
 D) 16
 
-Q2. 9 coins, one heavier. Minimum weighings?
+Q2. You have 9 coins and one is heavier.
+Minimum weighings to find it?
+
 A) 1
 B) 2
 C) 3
 D) 4
+
+Answer format example:
+A,B
 `,
 
     logic_solution: ["C", "B"]
@@ -116,134 +204,153 @@ D) 4
 
   {
     id: 4,
-    title: "Table Builder Advanced",
+    title: "HTML Table",
 
-    html_question: `Create a table with header row and 3 data rows.`,
+    html_question: `Create a table with the following data:
 
-    html_solution: `<table><tr><th></th></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr></table>`,
+Name | Score
 
-    python_question: `How to Ccheck if a given string is palindrome or not in python.`,
+Alice | 90
+Bob | 85
+Charlie | 95
 
-    python_solution: `palindrome`,
+Write the full HTML table.`,
 
-    sql_question: `Delete users where age < 18. in the users table`,
+    html_solution: `<table><tr><th>Name</th><th>Score</th></tr><tr><td>Alice</td><td>90</td></tr><tr><td>Bob</td><td>85</td></tr><tr><td>Charlie</td><td>95</td></tr></table>`,
+
+    python_question: `Call the Python function max to find the largest number in the list [3,7,2].`,
+
+    python_solution: `max([3,7,2])`,
+
+    sql_question: `Table: users
+
+id | name | age
+
+Task:
+Write an SQL query to delete users whose age is less than 18.`,
 
     sql_solution: `DELETE FROM users WHERE age < 18`,
-
-    logic_question: `
-Q1. One guard lies, one tells truth. Best strategy?
-A) Ask which door is correct
-B) Ask both guards
-C) Ask what the other guard would say, choose opposite
-D) Random choice
-
-Q2. Father 4x son's age. In 20 years twice. Son’s age?
-A) 8
-B) 10
-C) 12
-D) 15
-`,
 
     logic_solution: ["C", "B"]
   },
 
   {
     id: 5,
-    title: "Image Card Component",
-    html_question: `Create card with <img>, <h3>, <p>, button.`,
-    html_solution: `<div><img><h3></h3><p></p><button></button></div>`,
-    python_question: `Find largest number in list [1,2,3,4,5].`,
-    python_solution: `max(1,2,3,4,5)`,
-    sql_question: `Select distinct city names from customers table.`,
-    sql_solution: `SELECT DISTINCT city FROM customers`,
-    logic_question: `
-Q1. Seating puzzle middle person?
-A) A
-B) B
-C) C
-D) D
+    title: "Image Card",
 
-Q2. Two ropes burn unevenly. Measure 45 min?
-A) Burn one rope fully
-B) Burn both one end
-C) Burn one both ends & other one end
-D) Cut rope
-`,
+    html_question: `Create a card component containing:
+
+Image source:
+card.jpg
+
+Heading text:
+Programming Challenge
+
+Paragraph text:
+Solve problems and level up.
+
+Button text:
+Start Now`,
+
+    html_solution: `<div><img src="card.jpg"><h3>Programming Challenge</h3><p>Solve problems and level up.</p><button>Start Now</button></div>`,
+
+    python_question: `Convert the string "25" into an integer using Python.`,
+
+    python_solution: `int("25")`,
+
+    sql_question: `Table: customers
+
+id | name | city
+
+Task:
+Write an SQL query to display unique city names.`,
+
+    sql_solution: `SELECT DISTINCT city FROM customers`,
+
     logic_solution: ["A", "C"]
   },
 
   {
     id: 6,
     title: "Video Section",
-    html_question: `Create section with video and source.`,
-    html_solution: `<section><video><source></video></section>`,
-    python_question: `Create dictionary of first 5 natural numbers.`,
-    python_solution: `{1:1,2:2,3:3,4:4,5:5}`,
-    sql_question: `Update salary to 50000 where id = 2.`,
-    sql_solution: `UPDATE employees SET salary = 50000 WHERE id = 2`,
-    logic_question: `
-Q1. 2^5 equals?
-A) 16
-B) 32
-C) 64
-D) 128
 
-Q2. Pattern: 5,10,20,40,?
-A) 60
-B) 70
-C) 80
-D) 90
-`,
+    html_question: `Create a section containing a video player.
+
+Video source:
+intro.mp4`,
+
+    html_solution: `<section><video><source src="intro.mp4"></video></section>`,
+
+    python_question: `Find the largest number in the list [10,5,8] using Python.`,
+
+    python_solution: `max([10,5,8])`,
+
+    sql_question: `Table: employees
+
+id | name | salary
+
+Task:
+Write an SQL query to update salary to 50000 where id is 2.`,
+
+    sql_solution: `UPDATE employees SET salary = 50000 WHERE id = 2`,
+
     logic_solution: ["B", "C"]
   },
 
   {
     id: 7,
-    title: "Ordered List Page",
-    html_question: `Create ordered list with 5 items.`,
-    html_solution: `<ol><li></li><li></li><li></li><li></li><li></li></ol>`,
-    python_question: `Convert string 'Hello' to integer safely.`,
-    python_solution: `int(Hello)`,
-    sql_question: `How to Count total orders.`,
-    sql_solution: `COUNT(*)`,
-    logic_question: `
-Q1. 7 factorial?
-A) 720
-B) 5040
-C) 40320
-D) 840
+    title: "Ordered List",
 
-Q2. 3 machines make 90 items in 6 hrs. Per hour?
-A) 10
-B) 15
-C) 18
-D) 20
-`,
+    html_question: `Create an ordered list containing:
+
+HTML
+CSS
+JavaScript
+Python
+SQL`,
+
+    html_solution: `<ol><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>SQL</li></ol>`,
+
+    python_question: `Reverse the list [5,4,3] using Python.`,
+
+    python_solution: `reversed([5,4,3])`,
+
+    sql_question: `Table: orders
+
+id | product | quantity
+
+Task:
+Write an SQL query to count total orders.`,
+
+    sql_solution: `SELECT COUNT(*) FROM orders`,
+
     logic_solution: ["B", "B"]
   },
 
   {
     id: 8,
-    title: "Form Validation Advanced",
-    html_question: `Create form with required validation and pattern attribute.`,
-    html_solution: `<form><input required pattern=".{5,}"><button type="submit"></button></form>`,
-    python_question: `Check if a number 'n' is even.`,
-    python_solution: `n% 2 == 0`,
-    sql_question: `Select names starting with 'A'.`,
-    sql_solution: `LIKE 'A%'`,
-    logic_question: `
-Q1. Perfect squares after 100 lockers?
-A) Prime
-B) Even
-C) Perfect squares
-D) Multiples of 10
+    title: "Form Validation",
 
-Q2. Missing sequence: 3,9,27,81,?
-A) 162
-B) 200
-C) 243
-D) 300
-`,
+    html_question: `Create a form containing:
+
+An input field requiring minimum 5 characters.
+A submit button with text Submit.`,
+
+    html_solution: `<form><input required minlength="5"><button>Submit</button></form>`,
+
+    python_question: `Check whether number 10 is even using Python.`,
+
+    python_solution: `10%2==0`,
+
+    sql_question: `Table: customers
+
+id | name | city
+
+Task:
+Write an SQL query to display names of customers whose names start with 'A'.`,
+
+    sql_solution: `SELECT name FROM customers WHERE name LIKE 'A%'`,
+
     logic_solution: ["C", "C"]
   }
 

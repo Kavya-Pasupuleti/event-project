@@ -50,6 +50,19 @@ const htmlPreview = document.getElementById('html-preview');
 
 // --- INITIALIZATION ---
 function init() {
+    // check for existing login state
+    const stored = localStorage.getItem('currentUser');
+    if (stored) {
+        currentUser = JSON.parse(stored);
+        userEmailDisplay.textContent = currentUser.email;
+        hideAllScreens();
+        dashboardScreen.classList.remove('hidden');
+        userInfo.classList.remove('hidden');
+    } else {
+        hideAllScreens();
+        landingScreen.classList.remove('hidden');
+    }
+
     setupEventListeners();
     updateDashboardUI();
 
@@ -184,7 +197,7 @@ function setupEventListeners() {
                 const response = await fetch('https://relay-race-backend-1.onrender.com/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, phone, college })
+                    body: JSON.stringify({ name, email, phone, college, password: pass })
                 });
 
                 const data = await response.json();
@@ -200,7 +213,7 @@ function setupEventListeners() {
                 showPopup("Server error. Please check if backend is running.", "error");
             }
         } else {
-            // MOCK Login (Assuming actual login would come later or be mock for now)
+            // login flow
             if (isAdminTarget && email === 'admin@debug.com' && pass === 'admin123') {
                 isAdmin = true;
                 hideAllScreens();
@@ -209,24 +222,52 @@ function setupEventListeners() {
                 showPopup("Access Granted: Admin Control Center Active", "success");
                 initAdminPanel();
             } else if (!isAdminTarget) {
-                currentUser = { name: name || 'Racer', email };
-                userEmailDisplay.textContent = email;
-                hideAllScreens();
-                dashboardScreen.classList.remove('hidden');
-                userInfo.classList.remove('hidden');
-                showPopup(`Welcome ${currentUser.name}! Start the race.`, "success");
-                updateDashboardUI();
+                try {
+                    const response = await fetch('https://relay-race-backend-1.onrender.com/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password: pass })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                        currentUser = data.participant;
+                        // persist login so user can't bypass
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        userEmailDisplay.textContent = currentUser.email;
+                        hideAllScreens();
+                        dashboardScreen.classList.remove('hidden');
+                        userInfo.classList.remove('hidden');
+                        showPopup(`Welcome ${currentUser.name}! Start the race.`, "success");
+                        updateDashboardUI();
+                    } else {
+                        showPopup(data.message || "Login failed", "error");
+                    }
+                } catch (error) {
+                    console.error('Login Error:', error);
+                    showPopup("Server error. Please check if backend is running.", "error");
+                }
             } else {
                 showPopup("Invalid Credentials provided", "error");
             }
         }
     });
 
+    // helper: ensure user is logged in before accessing protected functionality
+    function requireLogin() {
+        if (!currentUser) {
+            showToast('Please log in to continue', 'error');
+            hideAllScreens();
+            authScreen.classList.remove('hidden');
+            return false;
+        }
+        return true;
+    }
+
     // Level Selection
     document.querySelectorAll('.level-card').forEach(card => {
         card.addEventListener('click', () => {
             const level = parseInt(card.dataset.level);
-            if (level <= unlockedLevels) startLevel(level);
+            if (requireLogin() && level <= unlockedLevels) startLevel(level);
         });
     });
 
