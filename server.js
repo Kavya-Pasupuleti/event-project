@@ -56,6 +56,34 @@ app.post('/register', async (req, res) => {
     }
 });
 
+// 1b. POST /login → Authenticate user
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password required' });
+        }
+
+        const user = await Participant.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const ok = await bcrypt.compare(password, user.password);
+        if (!ok) {
+            return res.status(401).json({ message: 'Incorrect password' });
+        }
+
+        res.json({
+            message: 'Login successful',
+            participant: { name: user.name, email: user.email }
+        });
+    } catch (err) {
+        console.error('Login error', err);
+        res.status(500).json({ message: 'Server error', error: err.message });
+    }
+});
+
 // 2. PUT /complete/:email → Save totalTime when Level 4 is completed
 app.put('/complete/:email', async (req, res) => {
     try {

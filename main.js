@@ -57,18 +57,19 @@ function init() {
     updateDashboardUI();
 
     const stored = localStorage.getItem('currentUser');
-    if (stored) {
-        currentUser = JSON.parse(stored);
-        userEmailDisplay.textContent = currentUser.email;
-        hideAllScreens();
-        dashboardScreen.classList.remove('hidden');
-        userInfo.classList.remove('hidden');
-        updateDashboardUI();
-    } else {
+    if (!stored) {
         hideAllScreens();
         landingScreen.classList.remove('hidden');
         userInfo.classList.add('hidden');
+        return;
     }
+
+    currentUser = JSON.parse(stored);
+    userEmailDisplay.textContent = currentUser.email;
+    hideAllScreens();
+    dashboardScreen.classList.remove('hidden');
+    userInfo.classList.remove('hidden');
+    updateDashboardUI();
 
     // Landing page confetti celebration
     confetti({
@@ -192,19 +193,22 @@ function setupEventListeners() {
 
         // 1. Mandatory Input Validation
         if (!email || !pass) {
-            return showPopup("Please enter email and password", "error");
+            alert("Please enter email and password");
+            return;
         }
 
         if (isRegistering) {
             if (!name || !college || !phone) {
-                return showPopup("Please fill all fields", "error");
+                alert("Please fill all fields");
+                return;
             }
             if (pass !== confirmPasswordInput.value) {
-                return showPopup("Passwords don't match", "error");
+                alert("Passwords don't match");
+                return;
             }
 
             try {
-                const response = await fetch('https://relay-race-backend-1.onrender.com/register', {
+                const response = await fetch(`${API_URL}/register`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, phone, college, password: pass })
@@ -216,11 +220,11 @@ function setupEventListeners() {
                     showPopup("🎉 Registered Successfully! You can now login.", "success");
                     setAuthMode(false);
                 } else {
-                    showPopup(data.message || "Registration failed", "error");
+                    alert(data.message || "Registration failed");
                 }
             } catch (error) {
                 console.error('Registration Error:', error);
-                showPopup("Server error. Please check if backend is running.", "error");
+                alert("Server connection failed");
             }
         } else {
             // Login flow
@@ -233,7 +237,7 @@ function setupEventListeners() {
                 initAdminPanel();
             } else if (!isAdminTarget) {
                 try {
-                    const response = await fetch('https://relay-race-backend-1.onrender.com/login', {
+                    const response = await fetch(`${API_URL}/login`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, password: pass })
@@ -242,7 +246,7 @@ function setupEventListeners() {
                     const data = await response.json();
 
                     if (response.ok) {
-                        currentUser = data.participant;
+                        currentUser = data.user;
                         // Store Login State in localStorage
                         localStorage.setItem('currentUser', JSON.stringify(currentUser));
                         userEmailDisplay.textContent = currentUser.email;
@@ -254,15 +258,14 @@ function setupEventListeners() {
                         showPopup(`Welcome ${currentUser.name}! Start the race.`, "success");
                         updateDashboardUI();
                     } else {
-                        // Backend Validation handling
-                        showPopup(data.message || "Login failed", "error");
+                        alert(data.message || "Login failed");
                     }
                 } catch (error) {
                     console.error('Login Error:', error);
-                    showPopup("Server error. Please check if backend is running.", "error");
+                    alert("Server connection failed");
                 }
             } else {
-                showPopup("Invalid Credentials provided", "error");
+                alert("Invalid Credentials provided");
             }
         }
     });
@@ -318,9 +321,9 @@ function setupEventListeners() {
 }
 
 function logout() {
+    localStorage.removeItem('currentUser');
     currentUser = null;
     isAdmin = false;
-    localStorage.removeItem('currentUser'); // Clear session
     activeProblemSet = null; // Reset for next contestant
     unlockedLevels = 1;
     currentScore = 0;
@@ -330,7 +333,7 @@ function logout() {
     adminShortcutBtn.classList.add('hidden');
     hideAllScreens();
     landingScreen.classList.remove('hidden');
-    showPopup("Logged out successfully", "success");
+    alert("Logged out successfully");
 }
 
 // --- GAME CORE ---
