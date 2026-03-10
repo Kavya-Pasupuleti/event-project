@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import bcrypt from 'bcryptjs';
 import Participant from './models/Participant.js';
 
 dotenv.config();
@@ -34,15 +35,61 @@ mongoose.connect(MONGODB_URI)
 // 1. POST /register → Save registration details
 app.post('/register', async (req, res) => {
     try {
-        const { name, email, phone, college } = req.body;
+        const { name, email, phone, college, password } = req.body;
+        if (!name || !email || !phone || !college || !password) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
         const existing = await Participant.findOne({ email });
         if (existing) return res.status(400).json({ message: 'Email already registered' });
 
-        const newParticipant = new Participant({ name, email, phone, college });
+        const hashed = await bcrypt.hash(password, 10);
+        const newParticipant = new Participant({ name, email, phone, college, password: hashed });
         await newParticipant.save();
-        res.status(201).json({ message: 'Successfully registered for the race!', participant: newParticipant });
+
+        res.status(201).json({
+            message: 'Successfully registered for the race!',
+            participant: { name, email, phone, college }
+        });
     } catch (error) {
         res.status(500).json({ message: 'Error registering participant', error: error.message });
+    }
+});
+
+// 1b. POST /login → Authenticate user
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // 1. Input Validation: Check if fields are empty
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password required' });
+        }
+
+        // 2. Backend Validation: Check if user exists
+        const user = await Participant.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // 3. Backend Validation: Check if password is correct
+        const ok = await bcrypt.compare(password, user.password);
+        if (!ok) {
+            return res.status(401).json({ message: 'Incorrect password' });
+        }
+
+        // 4. Success Response
+        res.json({
+            message: 'Login successful',
+            participant: {
+                name: user.name,
+                email: user.email,
+                id: user._id
+            }
+        });
+    } catch (err) {
+        console.error('Login error', err);
+        res.status(500).json({ message: 'Server error', error: err.message });
     }
 });
 
