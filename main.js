@@ -477,7 +477,7 @@ function checkAnswer() {
             console.log(`⏱️ Race Finished! Total Time: ${totalTimeInSeconds.toFixed(2)}s`);
 
             // Save to Backend
-            fetch(`${API_URL}/complete/${currentUser.email}`, {
+            fetch(`${API_URL}/complete/${currentUser.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ totalTime: totalTimeInSeconds })
@@ -583,7 +583,9 @@ function initAdminPanel() {
     // Fetch Live Leaderboard
     const fetchLeaderboard = async () => {
         try {
-            const response = await fetch(`${API_URL}/admin/participants`);
+            const response = await fetch(`${API_URL}/admin/participants`, {
+                headers: { 'x-admin-token': 'admin123' }
+            });
             const participants = await response.json();
 
             usersList.innerHTML = participants.length > 0 ? participants.map(u => `
@@ -604,7 +606,10 @@ function initAdminPanel() {
                 btn.addEventListener('click', async () => {
                     const id = btn.dataset.id;
                     try {
-                        const res = await fetch(`${API_URL}/admin/mark-winner/${id}`, { method: 'PUT' });
+                        const res = await fetch(`${API_URL}/admin/mark-winner/${id}`, {
+                            method: 'PUT',
+                            headers: { 'x-admin-token': 'admin123' }
+                        });
                         if (res.ok) {
                             showToast("🏆 Participant marked as winner successfully!", "success");
                             fetchLeaderboard(); // Refresh
