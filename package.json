@@ -1,18 +1,18 @@
 {
-    "name": "relay-race-backend",
-    "version": "1.0.0",
-    "description": "Backend for Debug Relay Race",
-    "main": "server.js",
-    "type": "module",
-    "scripts": {
-        "start": "node server.js",
-        "dev": "nodemon server.js"
-    },
-    "dependencies": {
-        "bcryptjs": "^3.0.3",
-        "cors": "^2.8.5",
-        "dotenv": "^16.4.5",
-        "express": "^4.18.2",
-        "mongoose": "^8.0.3"
-    }
+  "name": "relay-race-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "firebase": "^10.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
 }

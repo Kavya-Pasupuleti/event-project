@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Debug Relay Race | IT Fest 2026</title>
+  <title>Debug Relay Race | IT Fest 2026</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script type="module" crossorigin src="/assets/index-BQsKoMKh.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CrloArqq.css">
+  <script type="module" crossorigin src="/assets/index-DWXzQChu.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-dax34xMM.css">
 </head>
 
 <body>
@@ -39,7 +39,7 @@
   <!-- Auth Screen -->
   <section id="auth-screen" class="auth-container fade-in hidden">
     <h1 id="auth-title" class="festive-title">Start the Race</h1>
-    <div id="auth-form">
+    <form id="auth-form">
       <!-- Register Extra Fields -->
       <div id="register-fields" class="hidden">
         <div class="form-group">
@@ -58,11 +58,11 @@
 
       <div class="form-group">
         <label>Email</label>
-        <input type="email" id="email" placeholder="student@college.edu" />
+        <input type="email" id="email" placeholder="student@college.edu" required />
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" id="password" placeholder="••••••••" />
+        <input type="password" id="password" placeholder="••••••••" required />
       </div>
 
       <div id="confirm-pass-field" class="form-group hidden">
@@ -70,7 +70,7 @@
         <input type="password" id="confirm-password" placeholder="••••••••" />
       </div>
 
-      <button id="auth-action-btn" class="btn-primary">Login</button>
+      <button type="submit" id="auth-action-btn" class="btn-primary">Login</button>
       <p style="text-align: center; margin-top: 1.5rem; color: var(--muted); font-size: 0.9rem;">
         <span id="auth-toggle-text">No account?</span> <a href="#" id="toggle-auth-mode"
           style="color: var(--primary); font-weight: 600;">Register here</a>
@@ -79,7 +79,7 @@
         Are you an organizer? <a href="#" id="admin-ptr-link" style="color: inherit; text-decoration: underline;">Admin
           Portal</a>
       </p>
-    </div>
+    </form>
   </section>
 
   <!-- Dashboard Screen -->
@@ -264,7 +264,7 @@
 
   <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>

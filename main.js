@@ -492,14 +492,12 @@ function checkAnswer() {
                 });
         }
 
-        /*
         confetti({
             particleCount: 150,
             spread: 80,
             origin: { y: 0.6 },
             colors: ['#6366f1', '#10b981', '#fbbf24']
         });
-        */
 
         // Return to dashboard after success
         setTimeout(() => {
